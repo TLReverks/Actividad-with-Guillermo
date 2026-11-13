@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo de libros | Biblioteca</title>
+</head>
+<body>
+    <header>
+        <h1>Catalogo de libros</h1>
+        <p>Consulta los libros registrados en la Biblioteca</p>
+    </header>
+    <nav>
+        <a href="/">inicio</a>
+        <a href="/libros/">Catalogo de libros</a>
+    </nav>
+    <main>
+        <h2>Libros disponibles en el catalogo</h2>
+        {% if libros %}
+        <ul>
+            {% for libro in libros %}
+            <li>
+                <strong>{{ libro.titulo }}</strong>
+                - ISBN: {{ libro.isbn }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p> Aun no hay libros registrados en el catalogo</p>
+        {% endif %}
+    </main>
+    <footer>
+        <p>Sistema de informacion de la Biblioteca</p>
+    </footer>
+</body>
+</html>
