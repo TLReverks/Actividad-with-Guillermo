@@ -1,30 +1,41 @@
+{% extends 'catalogo/base.html' %}
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale 1.0">
-    <title>inicio | Biblioteca</title>
-</head>
-<body>
-    <header>
-        <h1>Sistema de informacion de la Biblioteca</h1>
-        <p>Bienvenido al sistema de gestion bibliotecaria</p>
-    </header>
-    <nav>
-        <a href="/">inicio</a>
-        <a href="/libros/">Catalogo de libros</a>
-    </nav>
-    <main>
-        <h2>Bienvenido</h2>
-        <p>
-            Desde este sistema podras consultar el catalogo
-            de libros de nuestra biblioteca.
-        </p>
-        <a href="/libros/">Consultar libros</a>
-    </main>
-    <footer>
-        <p>Sistema de informacion de la Biblioteca</p>
-    </footer>
-</body>
-</html>
+{% block titulo %}Inicio | Biblioteca{% endblock %}
+
+{% block contenido %}
+
+<section class="bienvenida">
+    <h2>Bienvenido a nuestra biblioteca</h2>
+
+    <p>
+        Consulta nuestro catálogo y descubre los libros
+        disponibles para apoyar tu aprendizaje.
+    </p>
+
+    <a class="boton" href="{% url 'listar_libros' %}">
+        Explorar catálogo
+    </a>
+</section>
+
+<section class="seccion">
+    <h2>Nuestros servicios</h2>
+
+    <div class="tarjetas">
+        <article class="tarjeta">
+            <h3>Catálogo bibliográfico</h3>
+            <p>Consulta los libros registrados en el sistema.</p>
+        </article>
+
+        <article class="tarjeta">
+            <h3>Autores</h3>
+            <p>Conoce los autores asociados a las obras.</p>
+        </article>
+
+        <article class="tarjeta">
+            <h3>Préstamos</h3>
+            <p>En futuras etapas gestionaremos los préstamos.</p>
+        </article>
+    </div>
+</section>
+
+{% endblock %}

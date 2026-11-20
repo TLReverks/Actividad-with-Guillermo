@@ -1,36 +1,65 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo de libros | Biblioteca</title>
-</head>
-<body>
-    <header>
-        <h1>Catalogo de libros</h1>
-        <p>Consulta los libros registrados en la Biblioteca</p>
-    </header>
-    <nav>
-        <a href="/">inicio</a>
-        <a href="/libros/">Catalogo de libros</a>
-    </nav>
-    <main>
-        <h2>Libros disponibles en el catalogo</h2>
-        {% if libros %}
-        <ul>
+{% extends 'catalogo/base.html' %}
+
+{% block titulo %}Catálogo de libros | Biblioteca{% endblock %}
+
+{% block contenido %}
+
+<section class="seccion">
+    <h2>Catálogo de libros</h2>
+
+    <p class="descripcion">
+        Consulta la información bibliográfica registrada.
+    </p>
+
+    {% if libros %}
+        <div class="tarjetas">
+
             {% for libro in libros %}
-            <li>
-                <strong>{{ libro.titulo }}</strong>
-                - ISBN: {{ libro.isbn }}
-            </li>
+                <article class="tarjeta">
+                    <h3>{{ libro.titulo }}</h3>
+
+                    <p>
+                        <strong>ISBN:</strong>
+                        {{ libro.isbn }}
+                    </p>
+
+                    <p>
+                        <strong>Categoría:</strong>
+                        {{ libro.id_categoria_fk.nombre }}
+                    </p>
+
+                    <p>
+                        <strong>Año:</strong>
+                        {{ libro.anio_publicacion|default_if_none:"No registrado" }}
+                    </p>
+
+                    <p>
+                        <strong>Editorial:</strong>
+                        {{ libro.editorial|default_if_none:"No registrada" }}
+                    </p>
+
+                    <p>
+                        <strong>Páginas:</strong>
+                        {{ libro.num_paginas|default_if_none:"No registradas" }}
+                    </p>
+
+                    <p>
+                        <strong>Autores:</strong>
+                        {% for autor in libro.autores.all %}
+                            {{ autor.nombres }} {{ autor.apellidos }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            Sin autores registrados
+                        {% endfor %}
+                    </p>
+                </article>
             {% endfor %}
-        </ul>
-        {% else %}
-        <p> Aun no hay libros registrados en el catalogo</p>
-        {% endif %}
-    </main>
-    <footer>
-        <p>Sistema de informacion de la Biblioteca</p>
-    </footer>
-</body>
-</html>
+
+        </div>
+    {% else %}
+        <p class="mensaje-vacio">
+            Aún no hay libros registrados en el catálogo.
+        </p>
+    {% endif %}
+</section>
+
+{% endblock %}

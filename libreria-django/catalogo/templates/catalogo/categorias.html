@@ -1,0 +1,91 @@
+{% extends 'catalogo/base.html' %}
+
+{% block titulo %}
+    Categorías | Biblioteca
+{% endblock %}
+
+{% block contenido %}
+
+<section class="seccion">
+
+    <h2>Gestión de categorías</h2>
+
+    <p class="descripcion">
+        Registra y consulta las categorías bibliográficas.
+    </p>
+
+    <!-- Formulario para registrar categorías -->
+
+    <div class="tarjeta">
+
+        <h3>Registrar nueva categoría</h3>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="campo">
+                <label for="nombre">Nombre de la categoría:</label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
+                >
+            </div>
+
+            <div class="campo">
+                <label for="descripcion">Descripción:</label>
+
+                <textarea
+                    id="descripcion"
+                    name="descripcion"
+                    rows="3"
+                ></textarea>
+            </div>
+
+            <button type="submit" class="boton">
+                Guardar categoría
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- Listado de categorías -->
+
+    <h3>Categorías registradas</h3>
+
+    {% if categorias %}
+
+        <div class="tarjetas">
+
+            {% for categoria in categorias %}
+
+                <article class="tarjeta">
+
+                    <h3>{{ categoria.nombre }}</h3>
+
+                    <p>
+                        <strong>Descripción:</strong>
+                        {{ categoria.descripcion|default_if_none:"Sin descripción" }}
+                    </p>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <p class="mensaje-vacio">
+            No hay categorías registradas.
+        </p>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

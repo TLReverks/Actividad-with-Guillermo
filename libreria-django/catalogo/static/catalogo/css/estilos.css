@@ -1,0 +1,205 @@
+/* Configuración general */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #243247;
+    background-color: #f4f7fb;
+    line-height: 1.6;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Encabezado */
+.encabezado {
+    padding: 28px 0;
+    color: white;
+    background-color: #17365d;
+}
+
+.encabezado h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.encabezado p {
+    margin: 5px 0 0;
+}
+
+/* Navegación */
+.navegacion {
+    background-color: #24558a;
+}
+
+.navegacion .contenedor {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.navegacion a {
+    display: inline-block;
+    padding: 14px 16px;
+    color: white;
+    text-decoration: none;
+}
+
+.navegacion a:hover {
+    background-color: #17365d;
+}
+
+/* Contenido principal */
+.contenido {
+    min-height: 65vh;
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+.seccion {
+    margin-bottom: 35px;
+}
+
+.seccion h2,
+.bienvenida h2 {
+    color: #17365d;
+}
+
+.descripcion {
+    color: #596579;
+}
+
+/* Bienvenida */
+.bienvenida {
+    padding: 35px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.bienvenida h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+/* Botones */
+.boton {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 11px 18px;
+    color: white;
+    background-color: #24558a;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.boton:hover {
+    background-color: #17365d;
+}
+
+/* Tarjetas */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.tarjeta {
+    min-width: 0;
+    padding: 22px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #e0e7ef;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    overflow-wrap: anywhere;
+}
+
+.tarjeta h3 {
+    margin-top: 0;
+    color: #24558a;
+}
+
+.tarjeta p {
+    margin-bottom: 10px;
+}
+
+.mensaje-vacio {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+/* Pie de página */
+.pie {
+    padding: 18px 0;
+    color: white;
+    background-color: #17365d;
+    text-align: center;
+}
+
+.pie p {
+    margin: 0;
+}
+
+/* Diseño adaptable */
+@media (max-width: 800px) {
+    .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .bienvenida {
+        padding: 22px;
+    }
+
+    .encabezado h1 {
+        font-size: 1.6rem;
+    }
+
+    .navegacion .contenedor {
+        gap: 0;
+    }
+}
+
+/* Formulario de categorías */
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccd5e0;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #24558a;
+}
+
+.campo textarea {
+    resize: vertical;
+}

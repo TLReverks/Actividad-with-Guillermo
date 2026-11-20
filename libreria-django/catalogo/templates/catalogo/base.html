@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block titulo %}Biblioteca{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{% static 'catalogo/css/estilos.css' %}">
+</head>
+<body>
+
+    <header class="encabezado">
+        <div class="contenedor">
+            <h1>Biblioteca</h1>
+            <p>Sistema de Información Bibliotecaria</p>
+        </div>
+    </header>
+
+    <nav class="navegacion">
+        <div class="contenedor">
+            <a href="{% url 'inicio' %}">Inicio</a>
+            <a href="{% url 'listar_libros' %}">Catálogo de libros</a>
+            <a href="{% url 'listar_categorias' %}">Categorías</a>
+        </div>
+    </nav>
+
+    <main class="contenedor contenido">
+        {% block contenido %}
+        {% endblock %}
+    </main>
+
+    <footer class="pie">
+        <div class="contenedor">
+            <p>Sistema de Información de la Biblioteca</p>
+        </div>
+    </footer>
+
+</body>
+</html>
